@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="bg-white element-shadow p-3">
+    <div class="m-3">
+        <h5 class="text-center">Are you want to delete this user?</h5>
+    </div>
+
+    <div class="row">
+        <div class=" col-lg-4">
+
+            <img src="{% static 'img/profile.png' %}" alt="" width="300">
+
+        </div>
+        <div class=" col-lg-8">
+
+            <div class="mt-lg-5 pt-3">
+                <h3 class=" font-weight-bold">{{obj.get_full_name}}</h3>
+                <h5 class="text-muted">@{{obj.username}}</h5>
+                <p>{{obj.email}}</p>
+
+            </div>
+
+            <div class="row mt-5">
+
+                <div class=" col-lg-3 mb-4">
+
+                    <!-- Confirm Delete Form -->
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="far fa-trash-alt "></i>
+                            <span class="">Yes Delete</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Cancel link -->
+                <div class=" col-lg-3 mb-4">
+                    <a href="{% url 'accounts:list-user' %}" class="btn btn-primary">Cancel</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white p-3 shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand font-weight-bold text-color-1" href="{% url 'index' %}">Nyankumbu Parish</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <div class="d-block d-sm-block d-md-block d-lg-none">
+                    <h6 class=" font-weight-bold text-muted px-2 pt-3">Member</h6>
+                    <li class="nav-item">
+
+                        <a href="{% url 'parish:add_church_member' %}" class="nav-link text-decoration-none">
+                            <i class="fas fa-user-plus px-2 text-color-2"></i>
+                            <span class="text-dark px-2">Register Members</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a href="{% url 'parish:list_church_members' %}" class="nav-link text-decoration-none">
+                            <i class="fas fa-list px-2 text-color-2"></i>
+                            <span class="text-dark px-2">Church Members</span>
+                        </a>
+                    </li>
+                      <h6 class=" font-weight-bold text-muted px-2 pt-3">Contribution</h6>
+
+                    <li class="nav-item">
+
+                        <a href="{% url 'parish:add_member_contribution' %}" class="nav-link text-decoration-none">
+                            <i class="fa-solid fa-hand-holding-dollar px-2 text-color-2"></i>
+                            <span class="text-dark px-2">Add Contribution</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a href="{% url 'parish:list_member_contributions' %}" class="nav-link text-decoration-none">
+                            <i class="fas fa-list px-2 text-color-2"></i>
+                            <span class="text-dark px-2">Contributions</span>
+                        </a>
+                    </li>
+                    <h6 class=" font-weight-bold text-muted px-2 pt-3">User</h6>
+                    <li class="nav-item">
+                        <a href="{% url 'accounts:register-user' %}" class="nav-link text-decoration-none">
+                            <i class="fas fa-user-plus fa px-2 text-color-2"></i>
+                            <span class="text-dark px-2">Register User</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'accounts:list-user' %}" class="nav-link text-decoration-none">
+                            <i class="fas fa-list fa px-2 text-color-2"></i>
+                            <span class="text-dark px-2">List User</span>
+                        </a>
+                    </li>
+                </div>
+                
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown dropstart">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{% static 'img/profile.png' %}" alt="" width="30" height="30"
+                            class="border border-info rounded-circle">
+                        <span class="p-1">{{user.username}}</span>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'accounts:profile' %}"><i
+                                class="fas fa-user-circle text-color-2"></i> My profile</a>
+                        <a class="dropdown-item" href="{% url 'accounts:change-password' %}"><i
+                                class="fas fa-unlock-alt text text-color-2"></i> Change password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'accounts:logout' %}"><i
+                                class="fas fa-sign-out-alt text-danger"></i> Logout</a>
+                    </ul>
+                </li>
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-info btn-sm" href="{% url 'accounts:login' %}">
+                        Login <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h3 class=" m-3">Edit User</h3>
+
+<div class=" p-5 bg-white element-shadow">
+
+    <!-- Edit Form -->
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class=" col-6 mb-4">
+                    <label>First name <span class="text-danger">*</span></label>
+
+                {{form.first_name}}
+            </div>
+            <div class=" col-6 mb-4">
+                    <label>Last name <span class="text-danger">*</span></label>
+
+                {{form.last_name}}
+            </div>
+            <div class=" col-6 mb-4">
+                    <label>Username  <span class="text-danger">*</span></label>
+
+                {{form.username}}
+                {{form.username.errors}}
+            </div>
+            <div class=" col-6 mb-4">
+                    <label>Email <span class="text-danger">*</span></label>
+
+                {{form.email}}
+                {{form.email.errors}}
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Update</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

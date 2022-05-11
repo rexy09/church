@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<h3 class=" m-3">Register Church Member</h3>
+
+<div class="row p-3 justify-content-center">
+    <div class="col-lg-8 col-lg-offset-1 mb-4 bg-white shadow-sm px-4 pb-4 rounded-3">
+        <h3 class="my-3">New Church Member</h3>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class=" col-lg-12 mb-4">
+                    <label>Full Name <span class="text-danger">*</span></label>
+                    {{form.full_name|add_class:"form-control"|attr:"placeholder:Full Name"}}
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>Gender <span class="text-danger">*</span></label>
+                    {{form.gender|add_class:"form-control"|attr:"placeholder:Gender"}}
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>Birth Date <span class="text-danger">*</span></label>
+                    {{form.birth_date|add_class:"form-control"|attr:"type:date"}}
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>Marital Status <span class="text-danger">*</span></label>
+                    {{form.marital_status|add_class:"form-control"|attr:"placeholder:Marital Status"}}
+                </div>
+                <div class=" col-lg-6 mb-4">
+                    <label>Mobile Phone <span class="text-danger">*</span></label>
+                    {{form.mobile_phone|add_class:"form-control"|attr:"placeholder:Mobile Phone"}}
+                    <span class="text-danger">{{form.mobile_phone.errors}}</span>
+                </div>
+                <div class=" col-lg-6 mb-4">
+                    <label>Work Phone</label>
+                    {{form.work_phone|add_class:"form-control"|attr:"placeholder:Work Phone"}}
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>Address<span class="text-danger">*</span></label>
+                    {{form.address|add_class:"form-control"|attr:"placeholder:Address"}}
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>NIDA </label>
+                    {{form.nida|add_class:"form-control"|attr:"placeholder:NIDA"}}
+                    <span class="text-danger">{{form.nida.errors}}</span>
+                </div>
+                <div class=" col-lg-4 mb-4">
+                    <label>Email </label>
+                    {{form.email|add_class:"form-control"|attr:"placeholder:Email"}}
+                    <span class="text-danger">{{form.email.errors}}</span>
+                </div>
+                <div class=" col-lg-12 mb-4">
+                    <label>Photo </label>
+                    {{form.photo|add_class:"form-control"|attr:"placeholder:Full Name"}}
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-success">Register</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

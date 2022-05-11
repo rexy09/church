@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="bg-white element-shadow p-3">
+
+    <div class="row">
+        <div class=" col-lg-4">
+
+            {% if obj.photo %}
+            <img src="{{obj.photo.url}}" class="rounded-circle" alt="" width="300">
+            {% else %}
+            <img src="{% static 'img/profile.png' %}" alt="" width="300">
+            {% endif %}
+
+        </div>
+        <div class=" col-lg-8">
+
+            <div class="mt-lg-5 pt-3">
+                <h3 class=" fw-bold">{{obj.full_name}}</h3>
+                <h6 class="text-muted">NIDA: {{obj.nida}}</h6>
+
+            </div>
+
+            <div class="row mt-5">
+
+                <div class=" col-lg-3 mb-4">
+                    <h6 class="text-muted">
+                        <i class="fa-solid fa-person-half-dress"></i> {{obj.gender}}
+                    </h6>
+                    <h6 class="text-muted">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        {{obj.birth_date}}
+                    </h6>
+                    <h6 class="text-muted">
+                        <i class="fa-solid fa-ring"></i>
+                        {{obj.marital_status}}
+                    </h6>
+
+                </div>
+
+                <!-- Cancel link -->
+                <div class=" col-lg-3 mb-4">
+                    <h6 class="text-muted">
+                        <i class="fa-solid fa-phone"></i>
+                        {{obj.mobile_phone}}
+                        {% if obj.work_phone %}
+                        /{{obj.work_phone}}
+                        {% endif %}
+                    </h6>
+
+                    <p class="m-0">
+                        <i class="fa-solid fa-envelope"></i>
+                        {{obj.email}}</p>
+                    <p>
+                        <i class="fa-solid fa-map-pin"></i>
+                        {{obj.address}}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<h3 class=" m-3">Add Member Contribution</h3>
+
+<div class="row p-3 justify-content-center">
+    <div class="col-lg-8 col-lg-offset-1 mb-4 bg-white shadow-sm px-4 pb-4 rounded-3">
+        <h3 class="my-3">Member Contribution</h3>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class=" col-lg-12 mb-4">
+                    <label>Member <span class="text-danger">*</span></label>
+                    {{form.member|add_class:"form-control"|attr:"placeholder:Member"}}
+                </div>
+                <div class=" col-lg-12 mb-4">
+                    <label>Amount (TZS)<span class="text-danger">*</span></label>
+                    {{form.amount|add_class:"form-control"|attr:"placeholder:Amount"}}
+                </div>
+                <div class=" col-lg-12 mb-4">
+                    <label>Contribution Date <span class="text-danger">*</span></label>
+                    {{form.contribution_date|add_class:"form-control"|attr:"type:date"}}
+                </div>
+               
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+    $('#id_member').select2({
+        placeholder: 'Select church member',
+        selectionCssClass:'w-100 '
+    });
+    });
+</script>
+{% endblock %}

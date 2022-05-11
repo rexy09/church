@@ -1,0 +1,48 @@
+{% load static %}
+
+<!-- Side Bar -->
+<div class=" d-flex flex-column ">
+    <h6 class=" font-weight-bold text-muted px-2 pt-3">Member</h6>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'parish:add_church_member' %}" class="text-decoration-none">
+            <i class="fas fa-user-plus px-2 text-color-2"></i>
+            <span class="text-dark px-2">Register Members</span>
+        </a>
+    </div>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'parish:list_church_members' %}" class="text-decoration-none">
+            <i class="fas fa-list px-2 text-color-2"></i>
+            <span class="text-dark px-2">Church Members</span>
+        </a>
+    </div>
+
+    <h6 class=" font-weight-bold text-muted px-2 pt-3">Contribution</h6>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'parish:add_member_contribution' %}" class="text-decoration-none">
+            <i class="fa-solid fa-hand-holding-dollar px-2 text-color-2"></i>
+            <span class="text-dark px-2">Add Contribution</span>
+        </a>
+    </div>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'parish:list_member_contributions' %}" class="text-decoration-none">
+            <i class="fas fa-list px-2 text-color-2"></i>
+            <span class="text-dark px-2">Contributions</span>
+        </a>
+    </div>
+
+    <h6 class=" font-weight-bold text-muted px-2 pt-3">User</h6>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'accounts:register-user' %}" class="text-decoration-none">
+            <i class="fas fa-user-plus px-2 text-color-2"></i>
+            <span class="text-dark px-2">Register User</span>
+        </a>
+    </div>
+    <div class="p-2 side-bar-link">
+        <a href="{% url 'accounts:list-user' %}" class="text-decoration-none">
+            <i class="fas fa-list px-2 text-color-2"></i>
+            <span class="text-dark px-2">List User</span>
+        </a>
+    </div>
+
+</div>
+<!-- End Side Bar -->

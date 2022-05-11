@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h3 class=" m-3">Dashboard</h3>
+
+<div class=" row  p-3">
+
+    <div class=" col-lg-4 mb-4">
+        <a href="{% url 'parish:list_church_members' %}" class="text-decoration-none">
+            <div class="d-flex flex-row element-shadow p-3 rounded-3 bg-white" style="border-left: 3px solid #34a1cd;">
+                <div class="d-flex align-items-center mx-3">
+                    <div class="" style="border-radius:200px; background-color:#34a1cd;">
+                        <i class="fa-solid fa-users p-4 text-color- text-light fa-2x"></i>
+                    </div>
+
+                </div>
+                <div class="ml-3 d-flex flex-column">
+                    <div class="mt-2">
+
+                        <h4 class="font-weight-bold text-dark">{{members.count}}</h4>
+                    </div>
+                    <div>
+                        <h5 class="text-muted">Church Members</h5>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class=" col-lg-4 mb-4">
+        <a href="{% url 'parish:list_member_contributions' %}" class="text-decoration-none">
+
+            <div class="d-flex flex-row element-shadow p-3 rounded-3 bg-white" style="border-left: 3px solid #34a1cd;">
+                <div class="d-flex align-items-center mx-3">
+                    <div class="" style="border-radius:200px; background-color:#34a1cd;">
+                        <i class="fa-solid fa-hand-holding-dollar p-4 text-color- text-light fa-2x"></i>
+                    </div>
+
+                </div>
+                <div class="ml-3 d-flex flex-column">
+                    <div class="mt-2">
+
+                        <h4 class="font-weight-bold text-dark">{{contributions.count}}</h4>
+                    </div>
+                    <div>
+                        <h5 class="text-muted">Member Contributions</h5>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

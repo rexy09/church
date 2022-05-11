@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h3 class=" m-3">User List</h3>
+
+<div class="bg-white p-3 element-shadow table-responsive">
+
+    <!-- Users List -->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for user in users %}
+            <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td >
+                    <div class="d-flex flex-row justify-content-around">
+                        <a href="{% url 'accounts:view-user' id=user.id%}"
+                            class="text-decoration-none btn btn-outline-info btn-sm mx-1">
+                            <i class="far fa-eye fa"></i>
+                            <span class="">View</span>
+                        </a>
+                        <a href="{% url 'accounts:edit-user' id=user.id%}"
+                            class="text-decoration-none btn btn-outline-primary btn-sm mx-1">
+                            <i class="fas fa-user-edit"></i>
+                            <span class="">Edit</span>
+                        </a>
+                        <a href="{% url 'accounts:delete-user' id=user.id %}"
+                            class="text-decoration-none btn btn-outline-danger btn-sm mx-1">
+                            <i class="far fa-trash-alt "></i>
+                            <span class="">Delete</span>
+                        </a>
+                    </div>
+
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center">
+                    <p>No User Available!</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- End Users List -->
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation ">
+        {% if users.has_other_pages %}
+        <ul class="pagination mx-auto d-flex justify-content-center">
+            {% if users.has_previous %}
+            <li class="page-item">
+                <a href="?page={{ users.previous_page_number }}" class="page-link text-dark" aria-label="Previous">
+                    <span aria-hidden="true" class="text-info">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item rounded-left bg-light border">
+                <a href="" class="nav-link disabled font-weight-bold" tabindex="-1" aria-disabled="true"
+                    aria-label="Previous">
+                    <span varia-hidden="true" class="text-info">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for i in users.paginator.page_range %}
+            {% if users.number == i %}
+            <li class="active page-item bg-info">
+                <a href="" class="nav-link disabled font-weight-bold" tabindex="-1" aria-disabled="true">
+                    <span class="text-light">{{ i }} <span class="sr-only">(current)</span></span>
+                </a>
+
+            </li>
+            {% else %}
+            <li class="page-item"><a href="?page={{ i }}" class="page-link text-dark">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if users.has_next %}
+            <li class="page-item">
+                <a href="?page={{ users.next_page_number }}" class="page-link text-dark" aria-label="Next">
+                    <span aria-hidden="true" class="text-info">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item rounded-right bg-light border">
+                <a href="" class="nav-link disabled font-weight-bold" tabindex="-1" aria-disabled="true"
+                    aria-label="Next">
+                    <span varia-hidden="true" class=" text-info">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </nav>
+    <!-- End Pagination -->
+
+</div>
+
+
+{% endblock %}
